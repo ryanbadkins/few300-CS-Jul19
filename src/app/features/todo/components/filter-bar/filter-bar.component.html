@@ -1,0 +1,21 @@
+<div class="btn-group"
+     role="group"
+     aria-label="Basic example">
+  <button type="button"
+          (click)="setFilter('all')"
+          [disabled]="(filter$ | async) === 'all'"
+          class="btn btn-secondary">View All</button>
+  <button type="button"
+          (click)="setFilter('incomplete')"
+          [disabled]="(filter$ | async) === 'incomplete'"
+          class="btn btn-secondary">Only Incomplete</button>
+  <button type="button"
+          (click)="setFilter('complete')"
+          [disabled]="(filter$ | async) === 'complete'"
+          class="btn btn-secondary">Only Complete</button>
+
+  <input type="text"
+         #filterText
+         (input)="updateFilter(filterText.value)"
+         class="form-control" />
+</div>

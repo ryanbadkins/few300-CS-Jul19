@@ -1,0 +1,25 @@
+<section class="row">
+  <div class="col-3">
+    <ul class="nav nav-pills flex-column">
+      <li class="nav-item">
+        <a class="nav-link"
+           [routerLinkActive]='["active"]'
+           [routerLink]="['list']">List</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"
+           [routerLinkActive]='["active"]'
+           [routerLink]="['entry']">Entry</a>
+      </li>
+
+    </ul>
+  </div>
+  <div *ngIf="!(loaded$ | async)"
+       class="alert alert-info">
+    <img
+         src="https://i0.wp.com/media.boingboing.net/wp-content/uploads/2015/10/tumblr_nlohpxGdBi1tlivlxo1_12801.gif?w=970">
+  </div>
+  <div *ngIf="(loaded$ | async)">
+    <router-outlet></router-outlet>
+  </div>
+</section>

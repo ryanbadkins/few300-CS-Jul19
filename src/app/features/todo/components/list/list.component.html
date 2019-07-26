@@ -1,0 +1,19 @@
+<app-filter-bar></app-filter-bar>
+<ul class="list-unstyled">
+  <li class="alert alert-info"
+      *ngFor="let todo of model$ | async">
+    <span [ngClass]="{done: todo.completed}">{{todo.description}}</span>
+    <input type="button"
+           [disabled]="todo.isTemp"
+           *ngIf="todo.completed === false"
+           (click)="markComplete(todo)"
+           class="btn btn-smm btn-danger"
+           value="X">
+  </li>
+</ul>
+<input type="button"
+       *ngIf="(filter$ | async) === 'all' || (filter$ | async)  === 'complete'"
+       [disabled]="completedItems.length === 0 "
+       class="btn btn-success"
+       value="Clear Completed"
+       (click)="removeCompleted()">
